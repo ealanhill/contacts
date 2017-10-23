@@ -2,4 +2,8 @@
     <string name="app_name">Contacts</string>
     <string name="header_favorites">Favorite Contacts</string>
     <string name="header_others">Other Contacts</string>
+
+
+    <!-- accessbility -->
+    <string name="accessibility_favorite">Favorite</string>
 </resources>

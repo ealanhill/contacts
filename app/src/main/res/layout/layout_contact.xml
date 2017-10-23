@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.constraint.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -7,8 +9,40 @@
         android:padding="16dp">
 
         <ImageView
-            android:layout_width=""
-            android:layout_height="" />
+            android:id="@+id/imageUserSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_user_small"
+            android:importantForAccessibility="no"/>
+
+        <ImageView
+            android:id="@+id/imageFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_favorite_true"
+            android:contentDescription="@string/accessibility_favorite"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@id/imageUserSmall"/>
+
+        <TextView
+            android:id="@+id/textUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textSize="18sp"
+            tools:text="Miss Piggy"
+            app:layout_constraintStart_toEndOf="@id/imageFavorite"/>
+
+        <TextView
+            android:id="@+id/textUserBusiness"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            tools:text="Muppets"
+            app:layout_constraintStart_toStartOf="@id/textUserName"
+            app:layout_constraintTop_toBottomOf="@id/textUserName"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
