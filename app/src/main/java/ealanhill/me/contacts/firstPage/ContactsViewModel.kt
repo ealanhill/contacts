@@ -1,4 +1,4 @@
-package ealanhill.me.contacts
+package ealanhill.me.contacts.firstPage
 
 import android.app.Application
 import me.tatarka.redux.android.lifecycle.StoreAndroidViewModel

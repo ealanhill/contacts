@@ -1,6 +1,8 @@
 package ealanhill.me.contacts
 
 import android.app.Application
+import ealanhill.me.contacts.firstPage.ContactsActionCreator
+import ealanhill.me.contacts.firstPage.ContactsModule
 import ealanhill.me.contacts.network.ApiModule
 import ealanhill.me.contacts.network.ContactsApi
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package ealanhill.me.contacts
+package ealanhill.me.contacts.firstPage
 
 import dagger.Module
 import dagger.Provides

@@ -1,6 +1,8 @@
-package ealanhill.me.contacts
+package ealanhill.me.contacts.firstPage
 
 import android.util.Log
+import ealanhill.me.contacts.Action
+import ealanhill.me.contacts.App
 import ealanhill.me.contacts.network.ContactsApi
 import ealanhill.me.contacts.network.models.Contact
 import me.tatarka.redux.Thunk

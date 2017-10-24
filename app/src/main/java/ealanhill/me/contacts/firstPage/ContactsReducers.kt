@@ -1,5 +1,8 @@
-package ealanhill.me.contacts
+package ealanhill.me.contacts.firstPage
 
+import ealanhill.me.contacts.Action
+import ealanhill.me.contacts.ContactsInterface
+import ealanhill.me.contacts.R
 import me.tatarka.redux.Reducer
 import me.tatarka.redux.Reducers
 
@@ -11,10 +14,10 @@ object ContactsReducers {
 
     fun filterContacts(): Reducer<RetrieveContactsAction, ContactsState> {
         return Reducer { action, state ->
-            val favoriteContacts = action.contacts
+            val favoriteContacts = RetrieveContactsAction.contacts
                     .filter { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
-            val otherContacts = action.contacts
+            val otherContacts = RetrieveContactsAction.contacts
                     .filterNot { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
 

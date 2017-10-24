@@ -1,22 +1,20 @@
-package ealanhill.me.contacts
+package ealanhill.me.contacts.firstPage
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.annotation.StringRes
 import android.support.constraint.ConstraintLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
+import ealanhill.me.contacts.*
 import ealanhill.me.contacts.databinding.ActivityContactsBinding
 import ealanhill.me.contacts.databinding.LayoutContactBinding
 import ealanhill.me.contacts.databinding.LayoutDividerBinding
 import ealanhill.me.contacts.network.models.Contact
-import okhttp3.HttpUrl
 import javax.inject.Inject
 
 class ContactsActivity : AppCompatActivity() {
