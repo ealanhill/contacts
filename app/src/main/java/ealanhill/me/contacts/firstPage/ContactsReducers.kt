@@ -26,7 +26,7 @@ object ContactsReducers {
                     listOf<ContactsInterface>(ContactsHeader(R.string.header_others)) +
                     otherContacts
 
-            state.copy(contacts)
+            state.copy(contacts = contacts)
         }
     }
 }

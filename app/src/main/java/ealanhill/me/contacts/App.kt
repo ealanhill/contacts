@@ -1,8 +1,6 @@
 package ealanhill.me.contacts
 
 import android.app.Application
-import ealanhill.me.contacts.firstPage.ContactsActionCreator
-import ealanhill.me.contacts.firstPage.ContactsModule
 import ealanhill.me.contacts.network.ApiModule
 import ealanhill.me.contacts.network.ContactsApi
 import retrofit2.Retrofit
@@ -22,7 +20,7 @@ class App: Application() {
                 .build()
         COMPONENT = DaggerAppComponent.builder()
                 .apiModule(ApiModule(retrofit.create(ContactsApi::class.java)))
-                .contactsModule(ContactsModule(ContactsActionCreator()))
+                .contextModule(ContextModule(this))
                 .build()
     }
 }
