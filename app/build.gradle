@@ -44,4 +44,22 @@ dependencies {
 
     // databinding
     kapt "com.android.databinding:compiler:2.3.2"
+
+    // retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+
+    // redux
+    compile "me.tatarka.redux:redux-core:0.10"
+    compile "me.tatarka.redux:redux-android:0.10"
+    compile "me.tatarka.redux:redux-android-lifecycle:0.10"
+    compile "me.tatarka.redux:redux-thunk:0.10"
+    compile "me.tatarka.redux:redux-rx:0.10"
+    compile "me.tatarka.redux:redux-rx2:0.10"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
