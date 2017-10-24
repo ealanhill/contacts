@@ -1,5 +1,6 @@
 package ealanhill.me.contacts.firstPage
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.databinding.DataBindingUtil
@@ -38,10 +39,15 @@ class ContactsActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView<ActivityContactsBinding>(this, R.layout.activity_contacts)
                 .apply {
                     contactsRecyclerView.layoutManager = LinearLayoutManager(this@ContactsActivity)
+                    contactsRecyclerView.adapter = ContactsAdapter(store.state.contacts)
                 }
+
+        contactsViewModel.state.observe(this, Observer { data ->
+            data?.let { (binding.contactsRecyclerView.adapter as ContactsAdapter).setData(data.contacts) }
+        })
     }
 
-    class ContactsAdapter(val contacts: List<ContactsInterface>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    class ContactsAdapter(var contacts: List<ContactsInterface>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         init {
             App.COMPONENT.inject(this)
@@ -81,11 +87,17 @@ class ContactsActivity : AppCompatActivity() {
 
         override fun getItemCount(): Int = contacts.size
 
+        fun setData(newContacts: List<ContactsInterface>) {
+            if (newContacts != contacts) {
+                contacts = newContacts
+                notifyDataSetChanged()
+            }
+        }
     }
 
     class ContactViewHolder(itemView: ConstraintLayout): RecyclerView.ViewHolder(itemView) {
 
-        val binding: LayoutContactBinding = DataBindingUtil.bind(itemView)
+        private val binding: LayoutContactBinding = DataBindingUtil.bind(itemView)
 
         fun bind(contact: Contact, context: Context) {
             binding.apply {
@@ -104,7 +116,7 @@ class ContactsActivity : AppCompatActivity() {
 
     class HeaderViewHolder(itemView: LinearLayout): RecyclerView.ViewHolder(itemView) {
 
-        val binding: LayoutDividerBinding = DataBindingUtil.bind(itemView)
+        private val binding: LayoutDividerBinding = DataBindingUtil.bind(itemView)
 
         fun bind(text: String) {
             binding.contactsTypeHeader.text = text
