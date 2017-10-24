@@ -1,5 +1,6 @@
 package ealanhill.me.contacts.network.models
 
+import ealanhill.me.contacts.ContactsInterface
 import okhttp3.HttpUrl
 
 data class Contact(val name: String ="",
@@ -11,4 +12,4 @@ data class Contact(val name: String ="",
                    val emailAddress: String = "",
                    val birthdate: String = "",
                    val phone: Phone = Phone(),
-                   val address: Address = Address())
+                   val address: Address = Address()): ContactsInterface
