@@ -1,3 +1,11 @@
 package ealanhill.me.contacts
 
-interface ContactsInterface
+interface ContactsInterface {
+
+    val type: Type
+
+    enum class Type {
+        CONTACT,
+        HEADER
+    }
+}

@@ -12,4 +12,6 @@ data class Contact(val name: String ="",
                    val emailAddress: String = "",
                    val birthdate: String = "",
                    val phone: Phone = Phone(),
-                   val address: Address = Address()): ContactsInterface
+                   val address: Address = Address()): ContactsInterface {
+    override val type = ContactsInterface.Type.CONTACT
+}

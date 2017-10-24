@@ -15,12 +15,13 @@ class ContactsReducersTest {
         var contactsState = ContactsState()
         contactsState = ContactsReducers.filterContacts()
                 .reduce(RetrieveContactsAction.create(contacts), contactsState)
-        assertTrue(contactsState.favoriteContacts == listOf(
+        val contactsExpected = listOf(ContactsHeader(R.string.header_favorites),
                 Contact(name = "a", isFavorite = true),
-                Contact(name="c", isFavorite = true)))
-        assertTrue(contactsState.otherContacts == listOf(
+                Contact(name="c", isFavorite = true),
+                ContactsHeader(R.string.header_others),
                 Contact(name = "b", isFavorite = false),
-                Contact(name="d", isFavorite = false)))
+                Contact(name="d", isFavorite = false))
+        assertTrue(contactsState.contacts == contactsExpected)
     }
 
     @Test
@@ -32,10 +33,15 @@ class ContactsReducersTest {
         var contactsState = ContactsState()
         contactsState = ContactsReducers.filterContacts()
                 .reduce(RetrieveContactsAction.create(contacts), contactsState)
-        assertTrue(contactsState.otherContacts == listOf(Contact(name = "a", isFavorite = false),
+
+        val contactsExpected = listOf(ContactsHeader(R.string.header_favorites),
+                ContactsHeader(R.string.header_others),
+                Contact(name = "a", isFavorite = false),
                 Contact(name = "b", isFavorite = false),
                 Contact(name="c", isFavorite = false),
-                Contact(name="d", isFavorite = false)))
+                Contact(name="d", isFavorite = false))
+
+        assertTrue(contactsState.contacts == contactsExpected)
     }
 
     @Test
@@ -50,16 +56,17 @@ class ContactsReducersTest {
         var contactsState = ContactsState()
         contactsState = ContactsReducers.filterContacts()
                 .reduce(RetrieveContactsAction.create(contacts), contactsState)
-        assertTrue(contactsState.favoriteContacts == listOf(
+
+        val contactsExpected = listOf(ContactsHeader(R.string.header_favorites),
                 Contact(name = "a", isFavorite = true),
                 Contact(name = "b", isFavorite = true),
                 Contact(name = "f", isFavorite = true),
-                Contact(name = "l", isFavorite = true)
-        ))
-        assertTrue(contactsState.otherContacts == listOf(
+                Contact(name = "l", isFavorite = true),
+                ContactsHeader(R.string.header_others),
                 Contact(name="c", isFavorite = false),
                 Contact(name="d", isFavorite = false),
-                Contact(name = "m", isFavorite = false)
-        ))
+                Contact(name = "m", isFavorite = false))
+
+        assertTrue(contactsState.contacts == contactsExpected)
     }
 }

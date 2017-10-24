@@ -17,8 +17,13 @@ object ContactsReducers {
             val otherContacts = action.contacts
                     .filterNot { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
-            state.copy(favoriteContacts = favoriteContacts,
-                    otherContacts = otherContacts)
+
+            val contacts = listOf<ContactsInterface>(ContactsHeader(R.string.header_favorites)) +
+                    favoriteContacts +
+                    listOf<ContactsInterface>(ContactsHeader(R.string.header_others)) +
+                    otherContacts
+
+            state.copy(contacts)
         }
     }
 }
