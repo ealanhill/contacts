@@ -21,7 +21,7 @@
             tools:layout_editor_absoluteX="149dp" />
 
         <TextView
-            android:id="@+id/textUserName"
+            android:id="@+id/textContactName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -33,7 +33,7 @@
             tools:layout_editor_absoluteX="147dp" />
 
         <TextView
-            android:id="@+id/textUserBusiness"
+            android:id="@+id/textContactBusiness"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -42,7 +42,7 @@
             tools:text="Miss Piggy"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textUserName"
+            app:layout_constraintTop_toBottomOf="@+id/textContactName"
             tools:layout_editor_absoluteX="162dp" />
 
         <android.support.v7.widget.RecyclerView
@@ -51,7 +51,7 @@
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textUserBusiness"
+            app:layout_constraintTop_toBottomOf="@+id/textContactBusiness"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="8dp" />
 

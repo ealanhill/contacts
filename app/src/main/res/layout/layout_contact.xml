@@ -24,10 +24,12 @@
             android:src="@drawable/ic_favorite_true"
             android:contentDescription="@string/accessibility_favorite"
             android:visibility="visible"
-            app:layout_constraintStart_toEndOf="@id/imageUserSmall"/>
+            app:layout_constraintStart_toEndOf="@id/imageUserSmall"
+            app:layout_constraintTop_toTopOf="@id/textContactName"
+            app:layout_constraintBottom_toBottomOf="@id/textContactName"/>
 
         <TextView
-            android:id="@+id/textUserName"
+            android:id="@+id/textContactName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -36,13 +38,13 @@
             app:layout_constraintStart_toEndOf="@id/imageFavorite"/>
 
         <TextView
-            android:id="@+id/textUserBusiness"
+            android:id="@+id/textContactBusiness"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/gray"
             tools:text="Muppets"
-            app:layout_constraintStart_toStartOf="@id/textUserName"
-            app:layout_constraintTop_toBottomOf="@id/textUserName"/>
+            app:layout_constraintStart_toStartOf="@id/textContactName"
+            app:layout_constraintTop_toBottomOf="@id/textContactName"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
