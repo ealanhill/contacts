@@ -12,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        dataBinding {
+            enabled = true
+        }
     }
     buildTypes {
         release {
@@ -57,6 +60,11 @@ dependencies {
     compile "me.tatarka.redux:redux-thunk:0.10"
     compile "me.tatarka.redux:redux-rx:0.10"
     compile "me.tatarka.redux:redux-rx2:0.10"
+
+    // Arch Lifecycle
+    compile 'android.arch.lifecycle:runtime:1.0.3'
+    compile 'android.arch.lifecycle:extensions:1.0.0-rc1'
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-rc1"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }

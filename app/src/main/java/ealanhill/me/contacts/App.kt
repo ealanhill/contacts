@@ -20,6 +20,7 @@ class App: Application() {
                 .build()
         COMPONENT = DaggerAppComponent.builder()
                 .apiModule(ApiModule(retrofit.create(ContactsApi::class.java)))
+                .contactsModule(ContactsModule(ContactsActionCreator()))
                 .build()
     }
 }

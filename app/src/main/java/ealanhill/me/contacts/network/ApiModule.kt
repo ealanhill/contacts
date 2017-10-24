@@ -5,7 +5,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ApiModule(val contactsApi: ContactsApi) {
+class ApiModule(private val contactsApi: ContactsApi) {
 
     @Provides
     @Singleton

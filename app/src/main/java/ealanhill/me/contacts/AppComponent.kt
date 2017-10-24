@@ -5,7 +5,10 @@ import ealanhill.me.contacts.network.ApiModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(ApiModule::class))
+@Component(modules = arrayOf(ApiModule::class,
+        ContactsModule::class))
 interface AppComponent {
     fun inject(contactsActionCreator: ContactsActionCreator)
+
+    fun inject(contactsActivity: ContactsActivity)
 }
