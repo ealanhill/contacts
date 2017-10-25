@@ -4,7 +4,7 @@ import ealanhill.me.contacts.detail.ContactDetail
 import ealanhill.me.contacts.detail.ContactDetailAction
 import ealanhill.me.contacts.detail.ContactInfoEntry
 import ealanhill.me.contacts.network.models.Contact
-import ealanhill.me.contacts.network.models.PhoneNumber
+import ealanhill.me.contacts.network.models.Phone
 import ealanhill.me.contacts.overview.ContactsHeader
 import ealanhill.me.contacts.overview.ContactsState
 import ealanhill.me.contacts.overview.RetrieveContactsAction
@@ -46,9 +46,15 @@ object ContactsReducers {
             val contact = action.contact
             val contactInfoEntry = mutableListOf<ContactInfoEntry>()
 
-            contact.phone.numbers.forEach { phoneNumber: PhoneNumber ->
-                if (phoneNumber.number.isNotEmpty()) {
-                    contactInfoEntry.add(ContactInfoEntry(Contact.PHONE, phoneNumber.number, phoneNumber.type.string))
+            contact.phone.apply {
+                if (home.isNotEmpty()) {
+                    contactInfoEntry.add(ContactInfoEntry(Contact.PHONE, home, Phone.Type.HOME.string))
+                }
+                if (mobile.isNotEmpty()) {
+                    contactInfoEntry.add(ContactInfoEntry(Contact.PHONE, mobile, Phone.Type.MOBILE.string))
+                }
+                if (work.isNotEmpty()) {
+                    contactInfoEntry.add(ContactInfoEntry(Contact.PHONE, work, Phone.Type.WORK.string))
                 }
             }
 

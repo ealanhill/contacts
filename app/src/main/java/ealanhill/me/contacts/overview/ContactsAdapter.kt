@@ -17,7 +17,7 @@ import ealanhill.me.contacts.databinding.LayoutDividerBinding
 import ealanhill.me.contacts.network.models.Contact
 import javax.inject.Inject
 
-class ContactsAdapter(var contacts: List<ContactsInterface>,private val onClickListener: ContactsOnClickListener):
+class ContactsAdapter(var contacts: List<ContactsInterface>, private val onClickListener: ContactsOnClickListener):
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     init {

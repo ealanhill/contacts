@@ -6,7 +6,6 @@ import ealanhill.me.contacts.detail.ContactInfoEntry
 import ealanhill.me.contacts.network.models.Address
 import ealanhill.me.contacts.network.models.Contact
 import ealanhill.me.contacts.network.models.Phone
-import ealanhill.me.contacts.network.models.PhoneNumber
 import ealanhill.me.contacts.overview.ContactsState
 import junit.framework.Assert.assertTrue
 import org.junit.Test
@@ -23,8 +22,8 @@ class ContactDetailReducersTest {
                 largeImageUrl = "http://example.com/2",
                 emailAddress = "example@gmail.com",
                 birthdate = "1987-12-02",
-                phone = Phone(listOf(PhoneNumber(PhoneNumber.Type.HOME, "555-555-5555"),
-                        PhoneNumber(PhoneNumber.Type.MOBILE, "123-123-1234"))),
+                phone = Phone(home = "555-555-5555",
+                        mobile =  "123-123-1234"),
                 address = Address(street = "123 Any St", city = "Any City", state = "IL", country = "US", zip = 12345))
 
         var contactsState = ContactsState()

@@ -5,5 +5,10 @@ data class Address(val street: String = "",
                    val state: String = "",
                    val country: String = "",
                    val zip: Int = -1) {
-    fun format(): String = String.format("%s\n%s, %s %d, %s", street, city, state, zip, country)
+    fun format(): String =
+        if (zip == -1) {
+            String.format("%s\n%s, %s, %s", street, city, state, country)
+        } else {
+            String.format("%s\n%s, %s %d, %s", street, city, state, zip, country)
+        }
 }
