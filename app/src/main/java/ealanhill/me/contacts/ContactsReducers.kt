@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object ContactsReducers {
-    val dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.US)
+    private val dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.US)
 
     fun reducers(): Reducer<Action, ContactsState> {
         return Reducers.matchClass<Action, ContactsState>()
@@ -25,10 +25,10 @@ object ContactsReducers {
 
     fun filterContacts(): Reducer<RetrieveContactsAction, ContactsState> {
         return Reducer { action, state ->
-            val favoriteContacts = RetrieveContactsAction.contacts
+            val favoriteContacts = action.contacts
                     .filter { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
-            val otherContacts = RetrieveContactsAction.contacts
+            val otherContacts = action.contacts
                     .filterNot { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
 
@@ -65,7 +65,7 @@ object ContactsReducers {
             }
 
             state.copy(contactDetail = ContactDetail(contact.name,
-                    contact.companyName,
+                    contact.companyName ?: "",
                     contact.largeImageUrl,
                     contact.isFavorite,
                     contactInfoEntry))
