@@ -15,9 +15,15 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Reducers to act on the {@link ContactsState}
+ */
 object ContactsReducers {
     private val dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.US)
 
+    /**
+     * Full reducers matcher
+     */
     fun reducers(): Reducer<Action, ContactsState> {
         return Reducers.matchClass<Action, ContactsState>()
                 .`when`(RetrieveContactsAction::class.java, filterContacts())
@@ -25,6 +31,10 @@ object ContactsReducers {
                 .`when`(FavoriteAction::class.java, updateContact())
     }
 
+    /**
+     * Filters the contacts retrieved from the server into the favorite and other lists. Adds the
+     * headers to make the recycler view easier to handle
+     */
     fun filterContacts(): Reducer<RetrieveContactsAction, ContactsState> {
         return Reducer { action, state ->
             val favoriteContacts = action.contacts
@@ -43,6 +53,10 @@ object ContactsReducers {
         }
     }
 
+    /**
+     * Updates the ContactsState with the selected contact detail. Creates the detail item list if
+     * the item is not empty
+     */
     fun createContactDetail(): Reducer<ContactDetailAction, ContactsState> {
         return Reducer { action, state ->
             val contact = action.contact
@@ -80,7 +94,11 @@ object ContactsReducers {
         }
     }
 
+    /**
+     * Updates the contact when it has been favorited/unfavorited
+     */
     fun updateContact(): Reducer<FavoriteAction, ContactsState> {
+        // TODO("Needs to be tested in unit tests")
         return Reducer { action, state ->
             val contactDetail = state.contactDetail
             val rawContacts = state.rawContacts

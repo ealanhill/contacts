@@ -6,8 +6,14 @@ import ealanhill.me.contacts.network.ContactsApi
 import ealanhill.me.contacts.network.models.Contact
 import me.tatarka.redux.Thunk
 
+/**
+ * Creates the actions to retrieve data from the server
+ */
 class ContactsActionCreator(private val contactsApi: ContactsApi) {
 
+    /**
+     * Retrieves the contact list from the server
+     */
     fun retrieveContacts(): Thunk<Action, Action> {
         return Thunk { dispatcher ->
             contactsApi.retrieveContacts()
