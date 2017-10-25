@@ -4,4 +4,6 @@ data class Address(val street: String = "",
                    val city: String = "",
                    val state: String = "",
                    val country: String = "",
-                   val zip: Int = -1)
+                   val zip: Int = -1) {
+    fun format(): String = String.format("%s\n%s, %s %d, %s", street, city, state, zip, country)
+}

@@ -14,4 +14,11 @@ data class Contact(val name: String ="",
                    val phone: Phone = Phone(),
                    val address: Address = Address()): ContactsInterface {
     override val type = ContactsInterface.Type.CONTACT
+
+    companion object {
+        val PHONE = "Phone"
+        val ADDRESS = "Address"
+        val BIRTHDATE = "Birthdate"
+        val EMAIL = "Email"
+    }
 }

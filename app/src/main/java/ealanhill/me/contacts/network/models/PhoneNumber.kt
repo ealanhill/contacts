@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class PhoneNumber(val type: PhoneNumber.Type, val number: String) {
     enum class Type(val string: String) {
         @SerializedName("work")
-        WORK("work"),
+        WORK("Work"),
         @SerializedName("home")
-        HOME("home"),
+        HOME("Home"),
         @SerializedName("mobile")
-        MOBILE("mobile")
+        MOBILE("Mobile")
     }
 }
