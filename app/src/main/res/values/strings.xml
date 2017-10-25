@@ -3,6 +3,7 @@
     <string name="header_favorites">Favorite Contacts</string>
     <string name="header_others">Other Contacts</string>
 
+    <string name="favorite">favorite</string>
 
     <!-- accessbility -->
     <string name="accessibility_favorite">Favorite</string>
