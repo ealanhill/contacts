@@ -28,12 +28,16 @@ class ContactsFragment : Fragment(), ContactsAdapter.ContactsOnClickListener {
     @Inject
     lateinit var actionCreator: ContactsActionCreator
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         contactsViewModel = ViewModelProviders.of(activity)
                 .get(ContactsViewModel::class.java)
         store = contactsViewModel.store
         App.COMPONENT.inject(this)
         store.dispatch(actionCreator.retrieveContacts())
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate<FragmentContactsBinding>(inflater, R.layout.fragment_contacts, container, false)
                 .apply {
                     contactsRecyclerView.layoutManager = LinearLayoutManager(context)

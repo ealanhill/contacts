@@ -3,6 +3,7 @@ package ealanhill.me.contacts
 import ealanhill.me.contacts.detail.ContactDetail
 import ealanhill.me.contacts.detail.ContactDetailAction
 import ealanhill.me.contacts.detail.ContactInfoEntry
+import ealanhill.me.contacts.detail.FavoriteAction
 import ealanhill.me.contacts.network.models.Contact
 import ealanhill.me.contacts.network.models.Phone
 import ealanhill.me.contacts.overview.ContactsHeader
@@ -21,6 +22,7 @@ object ContactsReducers {
         return Reducers.matchClass<Action, ContactsState>()
                 .`when`(RetrieveContactsAction::class.java, filterContacts())
                 .`when`(ContactDetailAction::class.java, createContactDetail())
+                .`when`(FavoriteAction::class.java, updateContact())
     }
 
     fun filterContacts(): Reducer<RetrieveContactsAction, ContactsState> {
@@ -37,7 +39,7 @@ object ContactsReducers {
                     listOf<ContactsInterface>(ContactsHeader(R.string.header_others)) +
                     otherContacts
 
-            state.copy(contacts = contacts)
+            state.copy(contacts = contacts, rawContacts = action.contacts)
         }
     }
 
@@ -75,6 +77,33 @@ object ContactsReducers {
                     contact.largeImageUrl,
                     contact.isFavorite,
                     contactInfoEntry))
+        }
+    }
+
+    fun updateContact(): Reducer<FavoriteAction, ContactsState> {
+        return Reducer { action, state ->
+            val contactDetail = state.contactDetail
+            val rawContacts = state.rawContacts
+            contactDetail.isFavorite = action.isFavorite
+            rawContacts.forEach { contact: Contact ->
+                if (contact.name == contactDetail.contactName) {
+                    contact.isFavorite = action.isFavorite
+                }
+            }
+
+            val favoriteContacts = rawContacts
+                    .filter { contact -> contact.isFavorite }
+                    .sortedBy { contact -> contact.name }
+            val otherContacts = rawContacts
+                    .filterNot { contact -> contact.isFavorite }
+                    .sortedBy { contact -> contact.name }
+
+            val contacts = listOf<ContactsInterface>(ContactsHeader(R.string.header_favorites)) +
+                    favoriteContacts +
+                    listOf<ContactsInterface>(ContactsHeader(R.string.header_others)) +
+                    otherContacts
+
+            ContactsState(contacts = contacts, contactDetail = contactDetail, rawContacts = rawContacts)
         }
     }
 }

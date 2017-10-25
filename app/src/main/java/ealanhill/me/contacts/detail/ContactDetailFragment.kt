@@ -44,7 +44,9 @@ class ContactDetailFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when (item.itemId) {
             R.id.menuFavoriteItem -> {
-                handleFavoriteSelected(item, !store.state.contactDetail.isFavorite)
+                val isFavorite = !store.state.contactDetail.isFavorite
+                handleFavoriteSelected(item, isFavorite)
+                store.dispatch(FavoriteAction(isFavorite))
                 true
             }
             else -> super.onOptionsItemSelected(item)
