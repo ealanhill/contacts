@@ -1,10 +1,8 @@
 package ealanhill.me.contacts
 
 import android.app.Application
-import com.google.gson.GsonBuilder
 import ealanhill.me.contacts.network.ApiModule
 import ealanhill.me.contacts.network.ContactsApi
-import ealanhill.me.contacts.network.models.Phone
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

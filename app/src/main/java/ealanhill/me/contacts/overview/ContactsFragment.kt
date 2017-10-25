@@ -48,6 +48,6 @@ class ContactsFragment : Fragment(), ContactsAdapter.ContactsOnClickListener {
 
     override fun onClick(contact: Contact) {
         store.dispatch(ContactDetailAction(contact))
-        (activity as MainActivity).swapFragments(ContactDetailFragment())
+        (activity as MainActivity).swapFragments(ContactDetailFragment(), addToBackStack = true)
     }
 }
