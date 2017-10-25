@@ -1,7 +1,6 @@
 package ealanhill.me.contacts
 
 import ealanhill.me.contacts.overview.ContactsHeader
-import ealanhill.me.contacts.overview.ContactsReducers
 import ealanhill.me.contacts.overview.ContactsState
 import ealanhill.me.contacts.overview.RetrieveContactsAction
 import ealanhill.me.contacts.network.models.Contact

@@ -1,6 +1,6 @@
-package ealanhill.me.contacts.overview
+package ealanhill.me.contacts
 
-import ealanhill.me.contacts.Action
+import ealanhill.me.contacts.overview.ContactsState
 import me.tatarka.redux.Dispatcher
 import me.tatarka.redux.SimpleStore
 import me.tatarka.redux.Thunk

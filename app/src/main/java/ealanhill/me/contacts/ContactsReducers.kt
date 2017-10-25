@@ -1,23 +1,44 @@
-package ealanhill.me.contacts.detail
+package ealanhill.me.contacts
 
-import android.text.TextUtils
-import ealanhill.me.contacts.Action
+import ealanhill.me.contacts.detail.ContactDetail
+import ealanhill.me.contacts.detail.ContactDetailAction
+import ealanhill.me.contacts.detail.ContactInfoEntry
 import ealanhill.me.contacts.network.models.Contact
 import ealanhill.me.contacts.network.models.PhoneNumber
+import ealanhill.me.contacts.overview.ContactsHeader
 import ealanhill.me.contacts.overview.ContactsState
+import ealanhill.me.contacts.overview.RetrieveContactsAction
 import me.tatarka.redux.Reducer
 import me.tatarka.redux.Reducers
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-object ContactDetailReducers {
-
-    val dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.US);
+object ContactsReducers {
+    val dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.US)
 
     fun reducers(): Reducer<Action, ContactsState> {
         return Reducers.matchClass<Action, ContactsState>()
+                .`when`(RetrieveContactsAction::class.java, filterContacts())
                 .`when`(ContactDetailAction::class.java, createContactDetail())
+    }
+
+    fun filterContacts(): Reducer<RetrieveContactsAction, ContactsState> {
+        return Reducer { action, state ->
+            val favoriteContacts = RetrieveContactsAction.contacts
+                    .filter { contact -> contact.isFavorite }
+                    .sortedBy { contact -> contact.name }
+            val otherContacts = RetrieveContactsAction.contacts
+                    .filterNot { contact -> contact.isFavorite }
+                    .sortedBy { contact -> contact.name }
+
+            val contacts = listOf<ContactsInterface>(ContactsHeader(R.string.header_favorites)) +
+                    favoriteContacts +
+                    listOf<ContactsInterface>(ContactsHeader(R.string.header_others)) +
+                    otherContacts
+
+            state.copy(contacts = contacts)
+        }
     }
 
     fun createContactDetail(): Reducer<ContactDetailAction, ContactsState> {
@@ -50,6 +71,4 @@ object ContactDetailReducers {
                     contactInfoEntry))
         }
     }
-
-    private fun isEmpty(string: String?): Boolean = string == null && string == ""
 }

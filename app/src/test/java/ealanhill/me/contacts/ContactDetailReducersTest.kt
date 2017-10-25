@@ -2,7 +2,6 @@ package ealanhill.me.contacts
 
 import ealanhill.me.contacts.detail.ContactDetail
 import ealanhill.me.contacts.detail.ContactDetailAction
-import ealanhill.me.contacts.detail.ContactDetailReducers
 import ealanhill.me.contacts.detail.ContactInfoEntry
 import ealanhill.me.contacts.network.models.Address
 import ealanhill.me.contacts.network.models.Contact
@@ -30,7 +29,7 @@ class ContactDetailReducersTest {
 
         var contactsState = ContactsState()
 
-        contactsState = ContactDetailReducers.createContactDetail()
+        contactsState = ContactsReducers.createContactDetail()
                 .reduce(ContactDetailAction(contact), contactsState)
 
         val contactDetailExpected = ContactDetail(contactName = "name",
