@@ -1,4 +1,4 @@
-package ealanhill.me.contacts.firstPage
+package ealanhill.me.contacts.overview
 
 import ealanhill.me.contacts.Action
 import ealanhill.me.contacts.ContactsInterface
@@ -14,10 +14,10 @@ object ContactsReducers {
 
     fun filterContacts(): Reducer<RetrieveContactsAction, ContactsState> {
         return Reducer { action, state ->
-            val favoriteContacts = RetrieveContactsAction.contacts
+            val favoriteContacts = action.contacts
                     .filter { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
-            val otherContacts = RetrieveContactsAction.contacts
+            val otherContacts = action.contacts
                     .filterNot { contact -> contact.isFavorite }
                     .sortedBy { contact -> contact.name }
 

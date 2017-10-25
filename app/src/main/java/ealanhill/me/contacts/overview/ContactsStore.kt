@@ -1,4 +1,4 @@
-package ealanhill.me.contacts.firstPage
+package ealanhill.me.contacts.overview
 
 import ealanhill.me.contacts.Action
 import me.tatarka.redux.Dispatcher

@@ -2,7 +2,7 @@ package ealanhill.me.contacts.network
 
 import dagger.Module
 import dagger.Provides
-import ealanhill.me.contacts.firstPage.ContactsActionCreator
+import ealanhill.me.contacts.overview.ContactsActionCreator
 import javax.inject.Singleton
 
 @Module

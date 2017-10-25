@@ -1,9 +1,9 @@
 package ealanhill.me.contacts
 
-import ealanhill.me.contacts.firstPage.ContactsHeader
-import ealanhill.me.contacts.firstPage.ContactsReducers
-import ealanhill.me.contacts.firstPage.ContactsState
-import ealanhill.me.contacts.firstPage.RetrieveContactsAction
+import ealanhill.me.contacts.overview.ContactsHeader
+import ealanhill.me.contacts.overview.ContactsReducers
+import ealanhill.me.contacts.overview.ContactsState
+import ealanhill.me.contacts.overview.RetrieveContactsAction
 import ealanhill.me.contacts.network.models.Contact
 import junit.framework.Assert.assertTrue
 import org.junit.Test
